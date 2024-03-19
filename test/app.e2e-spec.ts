@@ -209,7 +209,6 @@ describe('App e2e', () => {
           })
           .expectStatus(200)
           .expectJsonLength(1);
-        // .inspect();
       });
     });
 
@@ -271,7 +270,6 @@ describe('App e2e', () => {
           })
           .expectStatus(200)
           .expectJsonLength(0);
-        // .inspect();
       });
     });
   });

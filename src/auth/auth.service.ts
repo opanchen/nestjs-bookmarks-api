@@ -2,15 +2,14 @@ import {
   ForbiddenException,
   Injectable,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import * as argon from 'argon2';
-
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-// import { PrismaService } from 'prisma/prisma.service';
-import { PrismaService } from '../prisma/prisma.service';
-
-import { AuthDto } from './dto';
 import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+
+import * as argon from 'argon2';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+
+import { PrismaService } from '../prisma/prisma.service';
+import { AuthDto } from './dto';
 
 @Injectable()
 export class AuthService {
@@ -31,16 +30,9 @@ export class AuthService {
           email: dto.email,
           hash,
         },
-        //   select: {
-        //     id: true,
-        //     email: true,
-        //     createdAt: true,
-        //   },
       });
 
-      //   delete user.hash; // temporary solution not to return hash... (or use select obj above)
-      //todo: return the saved user
-      //   return user;
+      //todo: return data of saved user & token
       return this.signToken(user.id, user.email);
     } catch (error) {
       if (
@@ -84,9 +76,7 @@ export class AuthService {
       );
     }
 
-    //todo send back the user
-    // delete user.hash;
-    // return user;
+    //todo send back user data & token
     return this.signToken(user.id, user.email);
   }
 

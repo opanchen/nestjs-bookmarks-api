@@ -6,7 +6,6 @@ import {
   Strategy,
 } from 'passport-jwt';
 
-// import { PrismaService } from '@/prisma/prisma.service';
 import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
